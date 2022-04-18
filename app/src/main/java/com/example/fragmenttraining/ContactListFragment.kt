@@ -19,17 +19,19 @@ class ContactListFragment: Fragment(R.layout.fragment_list_contact) {
         cl_fragment_binding = binding
 
         binding.contact1.setOnClickListener{
-            val name: String = binding.contact1.text.toString()
-            var bundle: Bundle? = null
-            bundle?.putString("name", name)
-            ContactListFragment().arguments = bundle
+            val contact_name: String = binding.contact1.text.toString()
+            var bundle = Bundle()
+            bundle.putString("contact_name", contact_name)
+            ContactDetailFragment().arguments = bundle
             replaceFragment(ContactDetailFragment())
         }
         return binding.root
     }
 
+    // вот вопрос про getActivity
     private fun replaceFragment(fragment: Fragment){
-        parentFragmentManager
+        val act = requireActivity()
+        act.supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .addToBackStack(null)

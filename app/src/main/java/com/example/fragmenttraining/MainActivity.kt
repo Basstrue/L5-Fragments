@@ -5,10 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.fragmenttraining.databinding.ActivityMainBinding
 
-interface Communicator {
-    fun passDataCom(editTextInput: String)}
-
-class MainActivity : AppCompatActivity(), Communicator {
+class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
 
@@ -17,10 +14,7 @@ class MainActivity : AppCompatActivity(), Communicator {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, ContactListFragment()).commit()
+        supportFragmentManager.beginTransaction().show(ContactListFragment()).commit()
     }
 
-    override fun passDataCom(editTextInput: String) {
-        TODO("Not yet implemented")
-    }
 }
